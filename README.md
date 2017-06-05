@@ -1,5 +1,7 @@
 # Angular PWA Tool
 
+[![Build Status](https://travis-ci.org/GIANTCRAB/angular-pwa-tool.svg?branch=master)](https://travis-ci.org/GIANTCRAB/angular-pwa-tool)
+
 This is a PWA tool that will turn your Angular 2/4 apps into a PWA. 
 
 ## Usage
