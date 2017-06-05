@@ -9,8 +9,6 @@ env:
 cache:
   directories:
     - "node_modules"
-before_install:
-  - sudo apt-get install screen
 before_script:
   - npm install -g @angular/cli http-server
   - ng new ${PROJECT_NAME}
@@ -19,7 +17,7 @@ script:
   - cd ${PROJECT_NAME}
   - bash install.bash
   - ng build --prod
-  - screen -d -m http-server dist/
+  - http-server dist/ &
   - curl -s -f -o /dev/null -I -w "%{http_code}" "${SERVE_ENDPOINT}/manifest.json"
   - if [ $(curl -s -f -o /dev/null -I -w "%{http_code}" "${SERVE_ENDPOINT}/manifest.json") = 404 ]; then echo "Could not find manifest" && exit 1; fi
   - if [ $(curl -s -f -o /dev/null -I -w "%{http_code}" "${SERVE_ENDPOINT}/worker-basic.min.js") = 404 ]; then echo "Could not find service worker" && exit 1; fi
