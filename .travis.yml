@@ -10,14 +10,14 @@ cache:
   directories:
     - "node_modules"
 before_script:
-  - npm install -g @angular/cli http-server
+  - npm install -g @angular/cli http-server forever
   - ng new ${PROJECT_NAME}
 script:
   - cp -rf -t ${PROJECT_NAME} install.bash ngsw-manifest.json src
   - cd ${PROJECT_NAME}
   - bash install.bash
   - ng build --prod
-  - http-server dist/ &
+  - forever start -c http-server dist/
   - curl -s -f -o /dev/null -I -w "%{http_code}" "${SERVE_ENDPOINT}/manifest.json"
   - if [ $(curl -s -f -o /dev/null -I -w "%{http_code}" "${SERVE_ENDPOINT}/manifest.json") = 404 ]; then echo "Could not find manifest" && exit 1; fi
   - if [ $(curl -s -f -o /dev/null -I -w "%{http_code}" "${SERVE_ENDPOINT}/worker-basic.min.js") = 404 ]; then echo "Could not find service worker" && exit 1; fi
