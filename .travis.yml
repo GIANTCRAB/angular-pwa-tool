@@ -20,6 +20,6 @@ script:
   - bash install.bash
   - ng build --prod
   - screen -d -m http-server dist/
-  - if [ $(curl -s -f -o /dev/null -I -w "%{http_code}" ${SERVE_ENDPOINT}manifest.json) != 200 ]; then echo "Could not find manifest" && exit(1); fi
-  - if [ $(curl -s -f -o /dev/null -I -w "%{http_code}" ${SERVE_ENDPOINT}worker-basic.min.js) != 200 ]; then echo "Could not find service worker" && exit(1); fi
-  - if [ $(curl -v --silent ${SERVE_ENDPOINT} 2>&1 | grep manifest.json) != "" ]; then echo "Could not find manifest from HTML page" && exit(1); fi
+  - if [ $(curl -s -f -o /dev/null -I -w "%{http_code}" ${SERVE_ENDPOINT}manifest.json) != 200 ]; then echo "Could not find manifest" && exit 1; fi
+  - if [ $(curl -s -f -o /dev/null -I -w "%{http_code}" ${SERVE_ENDPOINT}worker-basic.min.js) != 200 ]; then echo "Could not find service worker" && exit 1; fi
+  - if [ $(curl -v --silent ${SERVE_ENDPOINT} 2>&1 | grep manifest.json) != "" ]; then echo "Could not find manifest from HTML page" && exit 1; fi
