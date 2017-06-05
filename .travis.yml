@@ -12,7 +12,7 @@ cache:
 before_install:
   - sudo apt-get install screen
 before_script:
-  - sudo npm install -g @angular/cli http-server
+  - npm install -g @angular/cli http-server
   - ng new ${PROJECT_NAME}
 script:
   - mv -t ${PROJECT_NAME} install.bash ngsw-manifest.json src
