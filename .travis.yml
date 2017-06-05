@@ -15,7 +15,7 @@ before_script:
   - npm install -g @angular/cli http-server
   - ng new ${PROJECT_NAME}
 script:
-  - mv -f -t ${PROJECT_NAME} install.bash ngsw-manifest.json src
+  - cp -rf -t ${PROJECT_NAME} install.bash ngsw-manifest.json src
   - cd ${PROJECT_NAME}
   - bash install.bash
   - ng build --prod
