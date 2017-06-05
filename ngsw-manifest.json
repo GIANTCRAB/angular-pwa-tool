@@ -1,0 +1,18 @@
+{
+  "routing": {
+    "index": "/index.html",
+    "routes": {
+      "/": {
+        "prefix": false
+      }
+    }
+  },
+  "dynamic": {
+    "group": [
+    ]
+  },
+  "push": {
+    "showNotifications": true,
+    "backgroundOnly": false
+  }
+}
